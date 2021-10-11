@@ -20,7 +20,7 @@ def get_filters():
     while True:
         city = input("\nWould you like to see data for Chicago, New York City, or Washington?\n").lower()
         if city not in CITY_DATA:
-            print("Error! Please try again. Enter the correct city (chicago, new york city,washington).")
+            print("Error! Please try again. Enter the correct city (chicago, new york city, washington).")
             continue
         else:
             break
@@ -156,7 +156,7 @@ def trip_duration_stats(df):
         mean_travel_time = df['Trip Duration'].mean()
         print("The mean travel time:", mean_travel_time, '\n')
     else:
-        print('Trip Duration stats cannot be calculated because Trip Duration does not appear in the dataframe\n')
+        print('Trip Duration stats cannot be calculated because Trip Duration does not appear in the dataframe.\n')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -173,14 +173,14 @@ def user_stats(df):
         counts_user_types = df['User Type'].value_counts()
         print("Counts of user types:", counts_user_types, '\n')
     else:
-        print("User Type stats cannot be calculated because User Type does not appear in the dataframe\n")
+        print("User Type stats cannot be calculated because User Type does not appear in the dataframe.\n")
 
     # Display counts of gender
     if 'Gender' in df:
         counts_gender = df['Gender'].value_counts()
         print("Counts of Gender:", counts_gender, '\n')
     else:
-        print('Gender stats cannot be calculated because Gender does not appear in the dataframe\n') 
+        print('Gender stats cannot be calculated because Gender does not appear in the dataframe.\n') 
 
 
     # Display earliest, most recent, and most common year of birth
@@ -196,7 +196,7 @@ def user_stats(df):
         common_year = max(dict_count, key=dict_count.get)
         print("The most common year of birth:", common_year, '\n')
     else:
-        print('Gender stats cannot be calculated because Gender does not appear in the dataframe\n')
+        print('Gender stats cannot be calculated because Gender does not appear in the dataframe.\n')
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
