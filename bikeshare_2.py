@@ -122,18 +122,18 @@ def station_stats(df):
 
     # display most commonly used start station
     used_start_station = df['Start Station'].mode()[0]
-    print("The most commonly used start station:", used_start_station, '\n')
+    count_used_start_station = df['Start Station'].value_counts()[0]
+    print("The most commonly used start station:", used_start_station, count_used_start_station, '\n')
 
 
     # display most commonly used end station
     used_end_station = df['End Station'].mode()[0]
-    print("The most commonly used end station:", used_end_station, '\n')
+    count_used_end_station = df['End Station'].value_counts()[0]
+    print("The most commonly used end station:", used_end_station, count_used_end_station, '\n')
 
 
     # display most frequent combination of start station and end station trip
-    start_to_end = df['Start Station'] + " / " + df['End Station']
-    dict_count = start_to_end.value_counts().to_dict()
-    freq_comb = max(dict_count, key=dict_count.get)
+    freq_comb = df.groupby('Start Station')['End Station'].value_counts().sort_values(ascending=False).index.tolist()[0]
     print("The most frequent combination of start to end station trip:", freq_comb, '\n')
 
 
